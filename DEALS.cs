@@ -14,10 +14,10 @@ namespace csharpy
         public static DEALS[]? GetNumberOfDeals(DEALS[]? deals)
         {
             return deals?
-                .Where(s => s.Sum >= 100) // Filter for deals with at least 100 sum
-                .OrderByDescending(s => s.Date).Take(5) // Sort by Sum in descending order
-                                                        //.Take(5)
-                .ToArray(); // Convert the result back to an array
+                .Where(s => s.Sum >= 1000) 
+                .OrderBy(s => s.Date).Take(4) 
+                                                        
+                .ToArray(); 
 
         }
         public static DEALS[]? GetSumOfDealsByMonth(DEALS[]? deals)
@@ -26,12 +26,12 @@ namespace csharpy
                 .GroupBy(d => new { d.Date.Year, d.Date.Month })
                 .Select(g => new DEALS
                 {
-                    Id = $"{g.Key.Year}-{g.Key.Month}", // Creating a unique Id for the monthly summary
+                    Id = $"{g.Key.Year}-{g.Key.Month}", 
                     Sum = g.Sum(d => d.Sum),
-                    Date = new DateTime(g.Key.Year, g.Key.Month, 1) // Set the DateTime to the first day of the month
+                    Date = new DateTime(g.Key.Year, g.Key.Month, 1) 
                 })
-                .OrderBy(deal => deal.Date) // Order by DateTime
-                .ToArray(); // Convert to array
+                .OrderBy(deal => deal.Date) 
+                .ToArray(); 
         }
 
         public static void dealprinter(DEALS[]? deals)
