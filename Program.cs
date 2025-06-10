@@ -14,25 +14,23 @@ namespace csharpy
         static void Main(string[] args)
         {
             READER.LoadTanksFromJson("tanks.json");            
-            lab1();
-            lab2();
+            lab();
+            
 
         }
-        static void lab2()
-        {
+        
+        static void lab()
+        {   ////////lab2
             System.Console.WriteLine("list of all deals: ");
             DEALS[]? deals = READER.LoadDealsFromJson("JSON_sample_1.json");
-            System.Console.WriteLine("list of 5 first deals sorted by date with at least 100 sum:");
+            System.Console.WriteLine("list of 4 first deals sorted by date with at least 1000 sum:");
             DEALS[]? sorted_deals = DEALS.GetNumberOfDeals(deals);
             DEALS.dealprinter(sorted_deals);
 
             System.Console.WriteLine("sum of deals sorted by month: ");
             DEALS[]? dealsbymonth = DEALS.GetSumOfDealsByMonth(deals);
             DEALS.dealprinter(dealsbymonth);
-        }
-        static void lab1()
-        {
-            
+            //////////lab1
             var tanks = GetTanks();//экземпляры классов
             var factories = GetFactories();
             var units = GetUnits();
